@@ -20,7 +20,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="mx-auto w-full  rounded-md bg-black">
+    <div className="mx-auto w-full rounded-md bg-black">
       <div className="flex flex-col p-6 gap-5">
         <Header />
         <div className="flex gap-2">
