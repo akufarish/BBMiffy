@@ -4,15 +4,17 @@ import useMusic from "../services/music";
 
 function MusicItem({ data }) {
   const url = import.meta.env.VITE_API_URL;
-  const { showMusic, played } = useMusic();
+  const { showMusic, played, setLaguss, laguss } = useMusic();
 
   function playMusic(music, id) {
     const musicUrl = `${url}/api/files/${data.collectionId}/${data.id}/${music}`;
-    console.log(music);
-    console.log(id);
     showMusic(id);
     const audio = new Audio(musicUrl);
+    setLaguss(audio);
     audio.play();
+    console.log(laguss);
+    console.log(audio.duration);
+    // audio.pause()
   }
 
   return (

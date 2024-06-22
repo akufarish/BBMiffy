@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { LuBell } from "react-icons/lu";
 import { useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import UserTooltip from "./UserTooltip";
+import useMusic from "../services/music";
 
 function SearchInput() {
   const location = useLocation();
   const [search, setSearch] = useState("");
+  const { allMusic, music } = useMusic();
 
   function clearText() {
     setSearch("");
   }
+
+  useEffect(() => {
+    allMusic();
+  }, []);
+
+  const lagu = useMemo(() => {
+    return music.filter((item) => {
+      return search
+        .toLowerCase()
+        .split(" ")
+        .every((word) => item.judul.toLowerCase().includes(word));
+    });
+  }, [search, music]);
 
   if (location.pathname == "/search") {
     return (
@@ -23,7 +38,7 @@ function SearchInput() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
-            className="bg-[#2a2a2a] rounded-full text-white w-[364px] h-[46px]   focus:outline-0 pl-10 focus:outline-none focus:border-[3px]"
+            className="bg-[#2a2a2a] rounded-full text-white w-[364px] h-[46px] pr-10  focus:outline-0 pl-10 focus:outline-none focus:border-[3px]"
             placeholder="What do you want to play?"
           />
           {search.length ? (
@@ -31,6 +46,19 @@ function SearchInput() {
               <button onClick={clearText} className="cursor-default">
                 <IoMdClose className="w-5 h-5 text-white absolute top-3 right-3" />
               </button>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className="flex flex-col">
+          {search ? (
+            <>
+              {lagu.map((data, index) => (
+                <h3 key={index} className="text-white">
+                  {data.judul}
+                </h3>
+              ))}
             </>
           ) : (
             <></>

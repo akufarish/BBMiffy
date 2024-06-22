@@ -15,11 +15,18 @@ import useMusic from "../services/music";
 import { isPlayed } from "../atom/atom";
 
 function BottomNavigationBar() {
-  const { lagu, played, setPlayed } = useMusic();
+  const { lagu, played, setPlayed, laguss } = useMusic();
 
   async function pause() {
-    console.log(played);
-    setPlayed(false);
+    console.log(laguss);
+
+    if (played == true) {
+      laguss.pause();
+      setPlayed(false);
+    } else {
+      laguss.play();
+      setPlayed(true);
+    }
   }
 
   const url = import.meta.env.VITE_API_URL;
@@ -53,7 +60,10 @@ function BottomNavigationBar() {
               <FaPause className="w-4 h-4 text-black" />
             </button>
           ) : (
-            <button className="w-[35px] h-[35px] hover:w-[38px] hover:h-[38px] flex items-center justify-center bg-white rounded-full">
+            <button
+              onClick={pause}
+              className="w-[35px] h-[35px] hover:w-[38px] hover:h-[38px] flex items-center justify-center bg-white rounded-full"
+            >
               <FaPlay className="w-4 h-4 text-black" />
             </button>
           )}

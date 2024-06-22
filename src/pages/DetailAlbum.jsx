@@ -22,7 +22,6 @@ function DetailAlbum() {
     showArtist(id);
   }, []);
 
-  console.log(id);
 
   return (
     <section className="mx-auto w-full h-[50rem] rounded-md bg-black">
