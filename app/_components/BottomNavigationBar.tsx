@@ -23,6 +23,7 @@ function BottomNavigationBar() {
 
   async function pause() {
     console.log(lagu);
+    
     if (!lagus) return; 
 
     if (played == true) {
@@ -49,7 +50,7 @@ function BottomNavigationBar() {
               {lagu?.judul}
             </p>
             <p className="text-gray-400 text-sm hover:underline hover:text-white cursor-pointer">
-              Lorem, ipsum.
+              {lagu.expand?.artist?.artist}
             </p>
           </div>
         </div>

@@ -14,7 +14,7 @@ interface Artist {
 }
 
 function Artist({ data }: Artist) {
-  const url = process.env.API_URL;
+  const url = "http://127.0.0.1:8090";
 
   return (
     <Link href={`/album/${data?.id}`} className="w-[229px] group h-[283px]">

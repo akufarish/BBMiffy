@@ -19,7 +19,7 @@ export interface Music {
         judul?: string
         expand?: {
             artist?: {
-                artist: string
+                artist?: string
             }
             album?: {
                 album: string
