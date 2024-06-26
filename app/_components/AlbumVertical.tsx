@@ -24,7 +24,7 @@ function AlbumVertical({ data }: Album) {
     <Link href={"/"} className="w-[229px] h-[283px] group">
       <div className="flex flex-col gap-3 relative">
         <img
-          src={`${url}/api/files/${data?.collectionId}/${data?.id}/${data?.cover}`}
+          src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
           className="w-[205px] h-[205px] rounded-md"
           alt=""
         />

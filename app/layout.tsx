@@ -5,13 +5,16 @@ import SideBar from "./_components/SideBar";
 import BottomNavigationBar from "./_components/BottomNavigationBar";
 import RightSideBar from "./_components/RightSideBar";
 import logo from "@/public/img/logo.svg"
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "BBMIFFY",
   description: "BBMIFFY",
-  icons: logo
+  icons: {
+    icon: "/logo.svg"
+  }
 };
 
 export default function RootLayout({
@@ -23,6 +26,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+      <link rel="icon" href={logo} sizes="any" />
+      </Head>
       <body className="bg-bg">
       <div className="min-h-full">
       <div className="hidden lg:flex lg:w-60 lg:flex-col lg:fixed lg:inset-y-0">

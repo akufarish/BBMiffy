@@ -20,7 +20,7 @@ function Artist({ data }: Artist) {
     <Link href={`/album/${data?.id}`} className="w-[229px] group h-[283px]">
       <div className="flex flex-col relative">
         <img
-          src={`${url}/api/files/${data?.collectionId}/${data?.id}/${data?.cover}`}
+          src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
           className="w-[205px] h-[205px] rounded-full"
           alt=""
         />

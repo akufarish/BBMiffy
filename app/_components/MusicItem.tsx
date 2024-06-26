@@ -1,7 +1,12 @@
+"use client"
 
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 import useMusic from "../_services/music";
+import { createStore, useAtom } from "jotai";
+import { dataMusik, lagus } from "../_atom/atom";
+import useMusicClient from "../_services/music.client";
+
 
 export interface Music {
     data: {
@@ -22,16 +27,21 @@ export interface Music {
 }
 
 function MusicItem({ data }: Music) {
-    const url = process.env.API_URL;
-  const { showMusic, played, setLaguss, laguss } = useMusic();
+  
+    const url = "http://127.0.0.1:8090";
+  const { showMusic, setLaguss} = useMusicClient();
+  // const { showMusic, laguStore } = useMusic();
 
   function playMusic(music: string | undefined, id: string | undefined) {
     const musicUrl = `${url}/api/files/${data.collectionId}/${data.id}/${music}`;
     showMusic(id);
+    console.log(musicUrl);
+    
     const audio = new Audio(musicUrl);
-    setLaguss(audio);
+    console.log(audio);
+    setLaguss(audio)
+    
     audio.play();
-    console.log(laguss);
     console.log(audio.duration);
     // audio.pause()
   }

@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Header from "../../_components/Header";
 import img from "../../public/img/ado.jpg";
@@ -29,10 +28,10 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
  async function DetailAlbum({params}: Props) {
     const url = process.env.API_URL;
 
-//   const { indexMusic } = useMusic();
+  const { indexMusic } = useMusic();
   const { showArtist } = useArtist();
 
-//    const music = await indexMusic(params.id);
+   const music = await indexMusic(params.id);
     const artist = await showArtist(params.id);
 
   return (
@@ -78,9 +77,9 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
                 </tr>
               </thead>
               <tbody>
-                {/* {music.map((data, index) => (
+                {music.map((data, index) => (
                   <MusicItem key={index} data={data} />
-                ))} */}
+                ))}
               </tbody>
             </table>
           </div>

@@ -14,37 +14,39 @@ import { MdOutlineSmartDisplay } from "react-icons/md";
 import { TbMicrophone2 } from "react-icons/tb";
 import { PiDesktopTower } from "react-icons/pi";
 import useMusic from "../_services/music";
-import { isPlayed } from "../_atom/atom";
+import {lagus, isPlayed} from "../_atom/atom"
+import useMusicClient from "../_services/music.client";
 
 function BottomNavigationBar() {
-  const { lagu, played, setPlayed, laguss } = useMusic();
+  // const {  laguStore, lagussStore, playedStore } = useMusic();
+  const {  lagu, played, laguss, setPlayed} = useMusicClient();
 
   async function pause() {
-    console.log(laguss);
-    if (!laguss) return; 
+    console.log(lagu);
+    if (!lagus) return; 
 
     if (played == true) {
-      laguss.pause();
-      setPlayed(false);
+      laguss?.pause();
+      setPlayed(false)
     } else {
-      laguss.play();
-      setPlayed(true);
+      laguss?.play();
+      setPlayed(true)
     }
   }
 
-  const url = "";
+  const url = "http://127.0.0.1:8090";
   return (
     <section className="w-full h-[72px] bg-black">
       <div className="flex px-6 justify-between items-center p-2">
         <div className="flex items-center gap-5">
           <img
-            src={`${url}/api/files/${lagu.collectionId}/${lagu.id}/${lagu.cover}`}
+            src={`${url}/api/files/${lagu?.collectionId}/${lagu?.id}/${lagu?.cover}`}
             alt=""
             className="w-[56px] h-[56px] rounded-md"
           />
           <div className="flex flex-col">
             <p className="text-white font-bold hover:underline cursor-pointer text-sm">
-              {lagu.judul}
+              {lagu?.judul}
             </p>
             <p className="text-gray-400 text-sm hover:underline hover:text-white cursor-pointer">
               Lorem, ipsum.
