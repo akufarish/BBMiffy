@@ -22,7 +22,6 @@ function DetailAlbum() {
     showArtist(id);
   }, []);
 
-
   return (
     <section className="mx-auto w-full h-[50rem] rounded-md bg-black">
       <div className="flex flex-col p-6">
@@ -62,9 +61,6 @@ function DetailAlbum() {
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Album
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    <IoMdTime className="w-5 h-5 text-gray-400" />
                   </th>
                 </tr>
               </thead>

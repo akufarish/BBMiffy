@@ -13,6 +13,7 @@ export default function useMusic() {
     try {
       const data = await pb.collection("music").getFullList({
         filter: `artist='${id}'`,
+        expand: "album",
       });
       console.log(data);
       setMusic(data);

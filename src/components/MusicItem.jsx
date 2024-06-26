@@ -43,8 +43,9 @@ function MusicItem({ data }) {
           <p className="">{data.judul}</p>
         </div>
       </td>
-      <td className="px-6 py-4 group-hover:text-white">Ado</td>
-      <td className="px-6 py-4 group-hover:text-white">4:12</td>
+      <td className="px-6 py-4 group-hover:text-white">
+        {data?.expand?.album?.album}
+      </td>
     </tr>
   );
 }
