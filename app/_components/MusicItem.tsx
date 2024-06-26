@@ -9,6 +9,8 @@ import useMusicClient from "../_services/music.client";
 
 
 export interface Music {
+  index: number
+
     data: {
         id?: string
         musik?: string
@@ -26,7 +28,7 @@ export interface Music {
     }
 }
 
-function MusicItem({ data }: Music) {
+function MusicItem({ data, index }: Music) {
   
     const url = "http://127.0.0.1:8090";
   const { showMusic, setLaguss} = useMusicClient();
@@ -52,7 +54,7 @@ function MusicItem({ data }: Music) {
         scope="row"
         className="px-6 py-4 w-12 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        <p className="group-hover:hidden">1</p>
+        <p className="group-hover:hidden">{index + 1}</p>
         <button
           onClick={() => playMusic(data?.musik, data?.id)}
           className="group-hover:flex hidden"

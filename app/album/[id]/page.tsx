@@ -78,7 +78,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
               </thead>
               <tbody>
                 {music.map((data, index) => (
-                  <MusicItem key={index} data={data} />
+                  <MusicItem key={index} data={data} index={index}/>
                 ))}
               </tbody>
             </table>
