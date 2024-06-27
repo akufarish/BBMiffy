@@ -9,6 +9,7 @@ import { IoMdTime } from "react-icons/io";
 import MusicItem from "../../_components/MusicItem";
 import useArtist from "../../_services/artist";
 import { Metadata } from "next";
+import Image from "next/image";
 
 interface Props {
     params: {
@@ -40,7 +41,9 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         <Header />
         <div className="flex mt-8 gap-8 items-center">
           <div className="w-[232px] h-[232px]">
-            <img
+            <Image
+            width={100}
+            height={100}
               src={`${url}/api/files/${artist?.collectionId}/${artist?.id}/${artist?.cover}`}
               className="w-full h-full"
               alt=""

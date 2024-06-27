@@ -13,13 +13,11 @@ export default function useMusic() {
         filter: `artist='${id}'`,
         expand: "album",
       });
-      console.log(data);
       return data as Music[]
   }
 
   async function allMusic() {
       const data = await pb.collection("music").getFullList();
-      console.log(data);
       return data as Music[]
     }
 
@@ -29,7 +27,6 @@ export default function useMusic() {
       const data = await pb.collection("music").getOne(id, {
         expand: "artist",
       });
-      console.log(data);
       laguStore.set(dataMusik, data)
       playedStore.set(isPlayed, true)
   }

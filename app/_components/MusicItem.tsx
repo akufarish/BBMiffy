@@ -6,6 +6,7 @@ import useMusic from "../_services/music";
 import { createStore, useAtom } from "jotai";
 import { dataMusik, lagus } from "../_atom/atom";
 import useMusicClient from "../_services/music.client";
+import Image from "next/image";
 
 
 export interface Music {
@@ -31,20 +32,21 @@ export interface Music {
 function MusicItem({ data, index }: Music) {
   
     const url = "http://127.0.0.1:8090";
-  const { showMusic, setLaguss} = useMusicClient();
+  const { showMusic, setLaguss, laguss} = useMusicClient();
   // const { showMusic, laguStore } = useMusic();
 
   function playMusic(music: string | undefined, id: string | undefined) {
     const musicUrl = `${url}/api/files/${data.collectionId}/${data.id}/${music}`;
     showMusic(id);
-    console.log(musicUrl);
+
+    if(laguss)  {
+      laguss.pause()
+    }
     
     const audio = new Audio(musicUrl);
-    console.log(audio);
     setLaguss(audio)
-    
+    audio.load()
     audio.play();
-    console.log(audio.duration);
     // audio.pause()
   }
 
@@ -65,7 +67,9 @@ function MusicItem({ data, index }: Music) {
       <td className="px-6 py-4 group-hover:text-white">
         <div className="flex gap-3 items-center">
           <div className="w-[40px] h-[40px]">
-            <img
+            <Image
+                    width={40}
+                    height={40}
               className="rounded-md"
               src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
               alt=""

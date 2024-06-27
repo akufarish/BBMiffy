@@ -8,7 +8,6 @@ export default function useAlbum() {
       const res = await pb.collection("album").getList(1, 5, {
         expand: "artist",
       });
-      console.log(res.items);
       return res.items as Album[]
   }
 

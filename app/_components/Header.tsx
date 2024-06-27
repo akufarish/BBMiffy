@@ -8,29 +8,38 @@ import { IoMdClose } from "react-icons/io";
 import UserTooltip from "./UserTooltip";
 import useMusic from "../_services/music";
 import { Music } from "../_utils/Music";
-import { useParams } from "next/navigation";
+import {  usePathname } from "next/navigation";
+import useMusicClient from "../_services/music.client";
+import Image from "next/image";
 
  function SearchInput() {
-  const location = useParams();
+  const location = usePathname();
   const [search, setSearch] = useState("");
-  const { allMusic } = useMusic();
+  const { allMusic, music, setQueryLagu, setSearchState } = useMusicClient();
 
   async function clearText() {
     setSearch("");
   }
 
-//     const music =  allMusic();
+  useEffect(() => {
+    allMusic()
+  }, [music])
 
-//   const lagu = useMemo(() => {
-//     return music.filter((item: Music) => {
-//       return search
-//         .toLowerCase()
-//         .split(" ")
-//         .every((word) => item.judul?.toLowerCase().includes(word));
-//     });
-//   }, [search, music]);
+  const lagu = useMemo(() => {
+    return music.filter((item: Music) => {
+      return search
+        .toLowerCase()
+        .split(" ")
+        .every((word) => item.judul?.toLowerCase().includes(word));
+    });
+  }, [search, music]);
 
-  if (location.pathname == "/search") {
+  useEffect(() => {
+    setQueryLagu(lagu)
+    setSearchState(search)
+  }, [search])
+
+  if (location == "/search") {
     return (
       <>
         <div className="relative group">
@@ -51,19 +60,6 @@ import { useParams } from "next/navigation";
           ) : (
             <></>
           )}
-        </div>
-        <div className="flex flex-col">
-          {/* {search ? (
-            <>
-              {lagu.map((data, index) => (
-                <h3 key={index} className="text-white">
-                  {data.judul}
-                </h3>
-              ))}
-            </>
-          ) : (
-            <></>
-          )} */}
         </div>
       </>
     );

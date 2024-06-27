@@ -16,13 +16,13 @@ import { PiDesktopTower } from "react-icons/pi";
 import useMusic from "../_services/music";
 import {lagus, isPlayed} from "../_atom/atom"
 import useMusicClient from "../_services/music.client";
+import Image from "next/image";
 
 function BottomNavigationBar() {
   // const {  laguStore, lagussStore, playedStore } = useMusic();
   const {  lagu, played, laguss, setPlayed} = useMusicClient();
 
   async function pause() {
-    console.log(lagu);
     
     if (!lagus) return; 
 
@@ -40,7 +40,9 @@ function BottomNavigationBar() {
     <section className="w-full h-[72px] bg-black">
       <div className="flex px-6 justify-between items-center p-2">
         <div className="flex items-center gap-5">
-          <img
+          <Image
+                  width={56}
+                  height={56}
             src={`${url}/api/files/${lagu?.collectionId}/${lagu?.id}/${lagu?.cover}`}
             alt=""
             className="w-[56px] h-[56px] rounded-md"

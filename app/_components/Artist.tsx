@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaPlay } from "react-icons/fa";
@@ -19,7 +20,9 @@ function Artist({ data }: Artist) {
   return (
     <Link href={`/album/${data?.id}`} className="w-[229px] group h-[283px]">
       <div className="flex flex-col relative">
-        <img
+        <Image
+                width={205}
+                height={205}
           src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
           className="w-[205px] h-[205px] rounded-full"
           alt=""

@@ -1,26 +1,32 @@
 import pb from "./pocketbase";
 import { createStore, useAtom } from "jotai";
-import { dataMusik, isPlayed, lagus } from "../_atom/atom";
+import { dataMusik, isPlayed, lagus, searchInput, searchLagu } from "../_atom/atom";
 import { Music } from "../_utils/Music";
 import { Audio } from "../_utils/Audio";
+import { useState } from "react";
 
 export default function useMusicClient() {
+  const [music, setMusic] = useState<Music[]>([]);
     const [lagu, setLagu] = useAtom(dataMusik);
     const [played, setPlayed] = useAtom(isPlayed);
     const [laguss, setLaguss] = useAtom<HTMLAudioElement | null>(lagus);  
+    const [queryLagu, setQueryLagu] = useAtom<Music[]>(searchLagu)
+    const [ searchState, setSearchState ]= useAtom(searchInput)
 
   async function indexMusic(id: string) {
       const data = await pb.collection("music").getFullList({
         filter: `artist='${id}'`,
         expand: "album",
       });
-      console.log(data);
+      setMusic(data)
       return data as Music[]
   }
 
   async function allMusic() {
-      const data = await pb.collection("music").getFullList();
-      console.log(data);
+      const data = await pb.collection("music").getFullList({
+        expand: "artist"
+      });
+      setMusic(data)
       return data as Music[]
     }
 
@@ -30,7 +36,6 @@ export default function useMusicClient() {
       const data = await pb.collection("music").getOne(id, {
         expand: "artist",
       });
-      console.log(data);
       setLagu(data)
       setPlayed(true)
   }
@@ -44,6 +49,12 @@ export default function useMusicClient() {
     laguss,
     setLaguss,
     played,
-    setPlayed
+    setPlayed,
+    music,
+    setMusic,
+    queryLagu,
+    setQueryLagu,
+    searchState,
+    setSearchState
   };
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaPlay } from "react-icons/fa";
@@ -23,7 +24,9 @@ function AlbumVertical({ data }: Album) {
   return (
     <Link href={"/"} className="w-[229px] h-[283px] group">
       <div className="flex flex-col gap-3 relative">
-        <img
+        <Image
+        width={205}
+        height={205}
           src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
           className="w-[205px] h-[205px] rounded-md"
           alt=""

@@ -4,10 +4,12 @@ import React from "react";
 import useMusic from "../_services/music";
 import { IoCloseSharp } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
+import Image from "next/image";
+import useMusicClient from "../_services/music.client";
 
 function RightSideBar() {
   const url = "";
-  const { lagu, played, setPlayed } = useMusic();
+  const { lagu, played, setPlayed } = useMusicClient();
 
   function close() {
     setPlayed(false);
@@ -25,7 +27,9 @@ function RightSideBar() {
             </button>
           </div>
         </div>
-        <img
+        <Image
+        width={288}
+        height={288}
           src={`${url}/api/files/${lagu?.collectionId}/${lagu.id}/${lagu?.cover}`}
           className="w-[288px] h-[288px] rounded-lg "
           alt=""

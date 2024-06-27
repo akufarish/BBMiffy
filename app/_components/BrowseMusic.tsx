@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -15,7 +16,9 @@ function BrowseMusic({ data }: BrowseMusicProps) {
 
   return (
     <Link href={"/"} className="w-[264px] h-[148px] bg-indigo-950 rounded-lg relative overflow-hidden">
-      <img
+      <Image
+              width={100}
+              height={100}
         src={`${url}/api/files/${data?.collectionId}/${data?.id}/${data?.cover}`}
         alt=""
         className="w-full h-full blur-md hue-rotate-30"     
@@ -24,7 +27,9 @@ function BrowseMusic({ data }: BrowseMusicProps) {
         {data?.artist}
       </p>
       <div className="absolute w-[8rem] h-[8rem] bg-black -bottom-5 -right-5 rotate-45">
-        <img
+        <Image
+        width={100}
+        height={100}
           src={`${url}/api/files/${data?.collectionId}/${data?.id}/${data?.cover}`}
           className="w-full h-full absolute"
           alt=""
