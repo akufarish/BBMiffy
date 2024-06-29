@@ -1,4 +1,4 @@
 export interface Audio {
-    pause?: () => {}
-    play?: () => {}
+  pause?: () => {};
+  play?: () => {};
 }

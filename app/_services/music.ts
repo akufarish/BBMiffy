@@ -9,26 +9,26 @@ export default function useMusic() {
   const lagussStore = createStore();
 
   async function indexMusic(id: string) {
-      const data = await pb.collection("music").getFullList({
-        filter: `artist='${id}'`,
-        expand: "album",
-      });
-      return data as Music[]
+    const data = await pb.collection("music").getFullList({
+      filter: `artist='${id}'`,
+      expand: "album",
+    });
+    return data as Music[];
   }
 
   async function allMusic() {
-      const data = await pb.collection("music").getFullList();
-      return data as Music[]
-    }
+    const data = await pb.collection("music").getFullList();
+    return data as Music[];
+  }
 
   async function showMusic(id?: string) {
-    if(!id) return
+    if (!id) return;
 
-      const data = await pb.collection("music").getOne(id, {
-        expand: "artist",
-      });
-      laguStore.set(dataMusik, data)
-      playedStore.set(isPlayed, true)
+    const data = await pb.collection("music").getOne(id, {
+      expand: "artist",
+    });
+    laguStore.set(dataMusik, data);
+    playedStore.set(isPlayed, true);
   }
 
   return {

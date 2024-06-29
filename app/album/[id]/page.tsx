@@ -12,28 +12,28 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 interface Props {
-    params: {
-        id: string
-    }
+  params: {
+    id: string;
+  };
 }
 
-export async function generateMetadata({params}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { showArtist } = useArtist();
-    const artist = await showArtist(params.id)
-    return {
-        title: artist.artist,
-        description: artist.artist
-    }
+  const artist = await showArtist(params.id);
+  return {
+    title: artist.artist,
+    description: artist.artist,
+  };
 }
 
- async function DetailAlbum({params}: Props) {
-    const url = process.env.API_URL;
+async function DetailAlbum({ params }: Props) {
+  const url = process.env.API_URL;
 
   const { indexMusic } = useMusic();
   const { showArtist } = useArtist();
 
-   const music = await indexMusic(params.id);
-    const artist = await showArtist(params.id);
+  const music = await indexMusic(params.id);
+  const artist = await showArtist(params.id);
 
   return (
     <section className="mx-auto w-full h-[50rem] rounded-md bg-black">
@@ -42,8 +42,8 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         <div className="flex mt-8 gap-8 items-center">
           <div className="w-[232px] h-[232px]">
             <Image
-            width={100}
-            height={100}
+              width={100}
+              height={100}
               src={`${url}/api/files/${artist?.collectionId}/${artist?.id}/${artist?.cover}`}
               className="w-full h-full"
               alt=""
@@ -81,7 +81,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
               </thead>
               <tbody>
                 {music.map((data, index) => (
-                  <MusicItem key={index} data={data} index={index}/>
+                  <MusicItem key={index} data={data} index={index} />
                 ))}
               </tbody>
             </table>

@@ -1,6 +1,6 @@
 export interface Artist {
-    id?: string
-    collectionId?: string
-    cover?: string
-    artist?: string
+  id?: string;
+  collectionId?: string;
+  cover?: string;
+  artist?: string;
 }

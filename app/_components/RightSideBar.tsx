@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import useMusic from "../_services/music";
@@ -28,8 +28,8 @@ function RightSideBar() {
           </div>
         </div>
         <Image
-        width={288}
-        height={288}
+          width={288}
+          height={288}
           src={`${url}/api/files/${lagu?.collectionId}/${lagu.id}/${lagu?.cover}`}
           className="w-[288px] h-[288px] rounded-lg "
           alt=""

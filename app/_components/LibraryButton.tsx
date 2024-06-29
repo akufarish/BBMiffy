@@ -4,7 +4,7 @@ import { FaArrowRight, FaPlus } from "react-icons/fa";
 import { VscLibrary } from "react-icons/vsc";
 
 interface libraryButtonProps {
-    label: string
+  label: string;
 }
 
 function LibraryButton({ label }: libraryButtonProps) {

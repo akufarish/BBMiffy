@@ -13,8 +13,8 @@ async function HomePage() {
   const { getArtist } = useArtist();
   const { getAlbum } = useAlbum();
 
-    const artist = await getArtist();
-    const album = await getAlbum();
+  const artist = await getArtist();
+  const album = await getAlbum();
 
   return (
     <div className="mx-auto w-full rounded-md bg-black">
@@ -37,10 +37,15 @@ async function HomePage() {
         </div>
         <section className="flex flex-col mt-8">
           <div className="flex w-full justify-between">
-            <Link href={"/"} className="text-white font-bold text-xl hover:underline-offset-4 hover:underline ">
+            <Link
+              href={"/"}
+              className="text-white font-bold text-xl hover:underline-offset-4 hover:underline "
+            >
               Your favorite artists
             </Link>
-            <Link href={"/"} className="text-gray-400 font-bold">Show all</Link>
+            <Link href={"/"} className="text-gray-400 font-bold">
+              Show all
+            </Link>
           </div>
 
           <div className="grid justify-center sm:grid-cols-2 lg:grid-cols-5 mt-5">
@@ -51,10 +56,15 @@ async function HomePage() {
         </section>
         <section className="flex flex-col mt-8">
           <div className="flex w-full justify-between">
-            <Link href={"/"} className="text-white font-bold text-xl hover:underline-offset-4 hover:underline ">
+            <Link
+              href={"/"}
+              className="text-white font-bold text-xl hover:underline-offset-4 hover:underline "
+            >
               Jump back in
             </Link>
-            <Link href={"/"} className="text-gray-400 font-bold">Show all</Link>
+            <Link href={"/"} className="text-gray-400 font-bold">
+              Show all
+            </Link>
           </div>
 
           <div className="grid justify-center sm:grid-cols-2 lg:grid-cols-5 mt-5">
@@ -65,10 +75,15 @@ async function HomePage() {
         </section>
         <section className="flex flex-col mt-8">
           <div className="flex w-full justify-between">
-            <Link href={"/"} className="text-white font-bold text-xl hover:underline-offset-4 hover:underline ">
+            <Link
+              href={"/"}
+              className="text-white font-bold text-xl hover:underline-offset-4 hover:underline "
+            >
               Recently played
             </Link>
-            <Link href={"/"} className="text-gray-400 font-bold">Show all</Link>
+            <Link href={"/"} className="text-gray-400 font-bold">
+              Show all
+            </Link>
           </div>
 
           <div className="grid justify-center sm:grid-cols-2 lg:grid-cols-5 mt-5">

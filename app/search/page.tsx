@@ -7,18 +7,17 @@ import Link from "next/link";
 import { Metadata } from "next";
 import SearchItem from "../_components/SearchItem";
 
-export function generateMetadata() : Metadata {
-    return {
-        title: "Search",
-        description: "Search page"
-    }
+export function generateMetadata(): Metadata {
+  return {
+    title: "Search",
+    description: "Search page",
+  };
 }
 
 async function Search() {
+  const { getArtist } = useArtist();
 
-const {getArtist} = useArtist()
-
-  const artist = await getArtist()
+  const artist = await getArtist();
 
   return (
     <div className="mx-auto w-full h-[60rem] rounded-md bg-black">
@@ -26,12 +25,15 @@ const {getArtist} = useArtist()
         <Header />
         <section className="flex flex-col mt-8">
           <div className="flex flex-col gap-5">
-              <SearchItem />
+            <SearchItem />
           </div>
         </section>
         <section className="flex flex-col mt-8">
           <div className="flex w-full justify-between">
-            <Link href={"/"} className="text-white font-bold text-xl hover:underline-offset-4 hover:underline ">
+            <Link
+              href={"/"}
+              className="text-white font-bold text-xl hover:underline-offset-4 hover:underline "
+            >
               Browse all
             </Link>
           </div>

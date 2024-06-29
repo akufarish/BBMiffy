@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useMemo, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
@@ -8,11 +8,11 @@ import { IoMdClose } from "react-icons/io";
 import UserTooltip from "./UserTooltip";
 import useMusic from "../_services/music";
 import { Music } from "../_utils/Music";
-import {  usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import useMusicClient from "../_services/music.client";
 import Image from "next/image";
 
- function SearchInput() {
+function SearchInput() {
   const location = usePathname();
   const [search, setSearch] = useState("");
   const { allMusic, music, setQueryLagu, setSearchState } = useMusicClient();
@@ -22,8 +22,8 @@ import Image from "next/image";
   }
 
   useEffect(() => {
-    allMusic()
-  }, [music])
+    allMusic();
+  }, [music]);
 
   const lagu = useMemo(() => {
     return music.filter((item: Music) => {
@@ -35,9 +35,9 @@ import Image from "next/image";
   }, [search, music]);
 
   useEffect(() => {
-    setQueryLagu(lagu)
-    setSearchState(search)
-  }, [search])
+    setQueryLagu(lagu);
+    setSearchState(search);
+  }, [search]);
 
   if (location == "/search") {
     return (

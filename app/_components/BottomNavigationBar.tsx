@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import img from "../../public/img/ado.jpg";
@@ -14,24 +14,23 @@ import { MdOutlineSmartDisplay } from "react-icons/md";
 import { TbMicrophone2 } from "react-icons/tb";
 import { PiDesktopTower } from "react-icons/pi";
 import useMusic from "../_services/music";
-import {lagus, isPlayed} from "../_atom/atom"
+import { lagus, isPlayed } from "../_atom/atom";
 import useMusicClient from "../_services/music.client";
 import Image from "next/image";
 
 function BottomNavigationBar() {
   // const {  laguStore, lagussStore, playedStore } = useMusic();
-  const {  lagu, played, laguss, setPlayed} = useMusicClient();
+  const { lagu, played, laguss, setPlayed } = useMusicClient();
 
   async function pause() {
-    
-    if (!lagus) return; 
+    if (!lagus) return;
 
     if (played == true) {
       laguss?.pause();
-      setPlayed(false)
+      setPlayed(false);
     } else {
       laguss?.play();
-      setPlayed(true)
+      setPlayed(true);
     }
   }
 
@@ -41,8 +40,8 @@ function BottomNavigationBar() {
       <div className="flex px-6 justify-between items-center p-2">
         <div className="flex items-center gap-5">
           <Image
-                  width={56}
-                  height={56}
+            width={56}
+            height={56}
             src={`${url}/api/files/${lagu?.collectionId}/${lagu?.id}/${lagu?.cover}`}
             alt=""
             className="w-[56px] h-[56px] rounded-md"

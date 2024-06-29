@@ -3,12 +3,11 @@ import pb from "./pocketbase";
 import { Album } from "../_utils/Album";
 
 export default function useAlbum() {
-
   async function getAlbum() {
-      const res = await pb.collection("album").getList(1, 5, {
-        expand: "artist",
-      });
-      return res.items as Album[]
+    const res = await pb.collection("album").getList(1, 5, {
+      expand: "artist",
+    });
+    return res.items as Album[];
   }
 
   return {

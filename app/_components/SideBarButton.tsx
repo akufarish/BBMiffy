@@ -2,8 +2,8 @@ import Link from "next/link";
 import React, { ReactNode } from "react";
 
 interface sideBarButtonProps {
-    icon: ReactNode,
-    label: string
+  icon: ReactNode;
+  label: string;
 }
 
 function SideBarButton({ icon, label }: sideBarButtonProps) {

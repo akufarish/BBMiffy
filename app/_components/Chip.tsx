@@ -1,8 +1,8 @@
 import React from "react";
 
 interface ChipProps {
-    label: string,
-    isActive: boolean
+  label: string;
+  isActive: boolean;
 }
 
 function Chip({ label, isActive }: ChipProps) {

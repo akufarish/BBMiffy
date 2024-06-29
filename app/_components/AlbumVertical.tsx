@@ -4,29 +4,29 @@ import React from "react";
 import { FaPlay } from "react-icons/fa";
 
 export interface Album {
-    data: {
-        id?: string
-    collectionId?: string
-    cover?: string
-    judul?: string
-    album?: string
+  data: {
+    id?: string;
+    collectionId?: string;
+    cover?: string;
+    judul?: string;
+    album?: string;
     expand?: {
-        artist?: {
-            artist: string
-        }
-    }
-    }
+      artist?: {
+        artist: string;
+      };
+    };
+  };
 }
 
 function AlbumVertical({ data }: Album) {
-    const url = process.env.API_URL;
+  const url = process.env.API_URL;
 
   return (
     <Link href={"/"} className="w-[229px] h-[283px] group">
       <div className="flex flex-col gap-3 relative">
         <Image
-        width={205}
-        height={205}
+          width={205}
+          height={205}
           src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
           className="w-[205px] h-[205px] rounded-md"
           alt=""

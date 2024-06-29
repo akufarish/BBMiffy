@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { FaPlay } from "react-icons/fa";
@@ -8,44 +8,42 @@ import { dataMusik, lagus } from "../_atom/atom";
 import useMusicClient from "../_services/music.client";
 import Image from "next/image";
 
-
 export interface Music {
-  index: number
+  index: number;
 
-    data: {
-        id?: string
-        musik?: string
-        collectionId?: string
-        cover?: string
-        judul?: string
-        expand?: {
-            artist?: {
-                artist?: string
-            }
-            album?: {
-                album: string
-            }
-    }
-    }
+  data: {
+    id?: string;
+    musik?: string;
+    collectionId?: string;
+    cover?: string;
+    judul?: string;
+    expand?: {
+      artist?: {
+        artist?: string;
+      };
+      album?: {
+        album: string;
+      };
+    };
+  };
 }
 
 function MusicItem({ data, index }: Music) {
-  
-    const url = "http://127.0.0.1:8090";
-  const { showMusic, setLaguss, laguss} = useMusicClient();
+  const url = "http://127.0.0.1:8090";
+  const { showMusic, setLaguss, laguss } = useMusicClient();
   // const { showMusic, laguStore } = useMusic();
 
   function playMusic(music: string | undefined, id: string | undefined) {
     const musicUrl = `${url}/api/files/${data.collectionId}/${data.id}/${music}`;
     showMusic(id);
 
-    if(laguss)  {
-      laguss.pause()
+    if (laguss) {
+      laguss.pause();
     }
-    
+
     const audio = new Audio(musicUrl);
-    setLaguss(audio)
-    audio.load()
+    setLaguss(audio);
+    audio.load();
     audio.play();
     // audio.pause()
   }
@@ -68,8 +66,8 @@ function MusicItem({ data, index }: Music) {
         <div className="flex gap-3 items-center">
           <div className="w-[40px] h-[40px]">
             <Image
-                    width={40}
-                    height={40}
+              width={40}
+              height={40}
               className="rounded-md"
               src={`${url}/api/files/${data.collectionId}/${data.id}/${data.cover}`}
               alt=""

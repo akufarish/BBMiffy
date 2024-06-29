@@ -3,9 +3,9 @@ import React, { ReactNode } from "react";
 import { FaPlay } from "react-icons/fa";
 
 interface AlbumProps {
-    icon: ReactNode,
-    label: string,
-    isFavorite: boolean
+  icon: ReactNode;
+  label: string;
+  isFavorite: boolean;
 }
 
 function Album({ icon, label, isFavorite }: AlbumProps) {
