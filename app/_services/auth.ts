@@ -35,6 +35,12 @@ export default function useAuth() {
       .collection("users")
       .authWithOAuth2({ provider: "google" });
     console.log("auth", authData);
+    document.cookie = `authToken=${pb.authStore.token}`;
+    router.push("/");
+  }
+
+  async function logOut() {
+    pb.authStore.clear();
   }
 
   return {
@@ -42,5 +48,6 @@ export default function useAuth() {
     Register,
     isLogin,
     oAuth,
+    logOut,
   };
 }
