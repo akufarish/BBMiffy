@@ -11,6 +11,7 @@ import { Music } from "../_utils/Music";
 import { usePathname } from "next/navigation";
 import useMusicClient from "../_services/music.client";
 import Image from "next/image";
+import pb from "../_services/pocketbase";
 
 function SearchInput() {
   const location = usePathname();
@@ -68,6 +69,7 @@ function SearchInput() {
 
 function Header() {
   const [user, setUser] = useState(false);
+  const authUser = pb.authStore?.model?.username;
 
   function toggleUser() {
     setUser(!user);
@@ -89,7 +91,7 @@ function Header() {
           <button onClick={toggleUser} className="">
             <img
               className="w-6 h-6 rounded-full"
-              src="https://api.dicebear.com/8.x/initials/svg?seed=Farish"
+              src={`https://api.dicebear.com/8.x/initials/svg?seed=${authUser}`}
               alt=""
             />
           </button>
