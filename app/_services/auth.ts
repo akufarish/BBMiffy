@@ -14,7 +14,7 @@ export default function useAuth() {
         .authWithPassword(payload.identity, payload.password);
       console.log(authData);
       setIsLogin(true);
-      document.cookie = `authToken=${pb.authStore.token}`
+      document.cookie = `authToken=${pb.authStore.token}`;
       router.push("/");
     } catch (error) {
       console.log(error);
@@ -30,10 +30,17 @@ export default function useAuth() {
       console.log(error);
     }
   }
+  async function oAuth() {
+    const authData = await pb
+      .collection("users")
+      .authWithOAuth2({ provider: "google" });
+    console.log("auth", authData);
+  }
 
   return {
     Login,
     Register,
     isLogin,
+    oAuth,
   };
 }
