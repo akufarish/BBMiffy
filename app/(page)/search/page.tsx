@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../_components/Header";
-import Artist from "../_components/Artist";
-import BrowseMusic from "../_components/BrowseMusic";
-import useArtist from "../_services/artist";
+import Header from "../../_components/Header";
+import Artist from "../../_components/Artist";
+import BrowseMusic from "../../_components/BrowseMusic";
+import useArtist from "../../_services/artist";
 import Link from "next/link";
 import { Metadata } from "next";
-import SearchItem from "../_components/SearchItem";
+import SearchItem from "../../_components/SearchItem";
 
 export function generateMetadata(): Metadata {
   return {

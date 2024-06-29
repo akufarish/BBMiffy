@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.auth-input {
+  @apply w-[324px] h-[46px] bg-black border border-gray-400 rounded-md placeholder:text-gray-400 px-5 text-white hover:border-gray-300 transition-all duration-200;
+}

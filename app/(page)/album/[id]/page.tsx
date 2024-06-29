@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import Header from "../../_components/Header";
+import Header from "../../../_components/Header";
 import img from "../../public/img/ado.jpg";
-import useMusic from "../../_services/music";
+import useMusic from "../../../_services/music";
 import { FaPlay } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { BsThreeDots } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
-import MusicItem from "../../_components/MusicItem";
-import useArtist from "../../_services/artist";
+import MusicItem from "../../../_components/MusicItem";
+import useArtist from "../../../_services/artist";
 import { Metadata } from "next";
 import Image from "next/image";
 

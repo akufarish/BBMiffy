@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./_components/Header";
-import Chip from "./_components/Chip";
-import Album from "./_components/Album";
+import Header from "../_components/Header";
+import Chip from "../_components/Chip";
+import Album from "../_components/Album";
 import { FaThumbsUp } from "react-icons/fa";
-import Artist from "./_components/Artist";
-import AlbumVertical from "./_components/AlbumVertical";
-import useArtist from "./_services/artist";
-import useAlbum from "./_services/album";
+import Artist from "../_components/Artist";
+import AlbumVertical from "../_components/AlbumVertical";
+import useArtist from "../_services/artist";
+import useAlbum from "../_services/album";
 import Link from "next/link";
 
 async function HomePage() {
