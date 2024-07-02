@@ -6,31 +6,22 @@ import SearchBar from "./SearchBar";
 import Album from "./Album";
 import { AiOutlineHome } from "react-icons/ai";
 import Link from "next/link";
+import SideBarItem from "./SideBarItem";
 
 function SideBar() {
   return (
     <div className="bg-black w-[324px] h-screen">
       <div className="flex gap-5  bg-gray-950 rounded-lg p-6 flex-col flex-1">
-        <Link
-          href={"/"}
-          className="flex group hover:text-white duration-500 items-center gap-3 w-[292px] h-[40px]"
-        >
-          <div className="">
-            <AiOutlineHome className="text-gray-400 w-6 h-6 group-hover:text-white duration-500" />
-          </div>
-          <p className="text-gray-400 group-hover:text-white duration-500 font-bold">
-            Home
-          </p>
-        </Link>
-        <Link
-          href={"/search"}
-          className="flex group hover:text-white duration-500 items-center gap-3 w-[292px] h-[40px]"
-        >
-          <FaSearch className="text-gray-400 w-6 h-6 group-hover:text-white duration-500" />
-          <p className="text-gray-400 group-hover:text-white duration-500 font-bold">
-            Search
-          </p>
-        </Link>
+        <SideBarItem
+          icon={<AiOutlineHome className="sidebar-icon" />}
+          label="Home"
+          link="/home"
+        />
+        <SideBarItem
+          icon={<FaSearch className="sidebar-icon" />}
+          label="Search"
+          link="/search"
+        />
       </div>
       <div className="flex  bg-gray-950  rounded-lg mx-5 flex-col">
         <LibraryButton label={"Your Library"} />
